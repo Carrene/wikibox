@@ -28,6 +28,7 @@ nav ul {
 
 main {
   grid-area: main;
+  padding: 10px;
 }
 
 footer{
