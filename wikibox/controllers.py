@@ -1,3 +1,4 @@
+import os
 from os.path import dirname, abspath, join
 
 from nanohttp import Controller, context, Static, settings
@@ -13,6 +14,7 @@ class Root(Controller):
 
     @template('index.mak')
     def index(self, *args):
+        root = settings.root
         return dict(
             settings=settings,
             environ=context.environ
