@@ -2,6 +2,7 @@ import functools
 from os.path import dirname, abspath, join
 
 from mako.lookup import TemplateLookup
+from nanohttp import action
 
 
 here = abspath(dirname(__file__))
