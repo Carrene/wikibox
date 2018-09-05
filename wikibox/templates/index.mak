@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>nanohttp mako example</title>
+    <title>WikiBox</title>
 </head>
 <body>
     <h1>WSGI environ</h1>

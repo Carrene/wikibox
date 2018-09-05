@@ -1,5 +1,8 @@
 
+from nanohttp import configure
+
 from wikibox import WikiBox
 
-app = WikiBox
+configure()
+app = WikiBox()
 
