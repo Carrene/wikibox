@@ -4,7 +4,6 @@
     <title>WikiBox</title>
 </%block>
 
-this is the body content.
 
 ## <h1>WSGI environ</h1>
 ## <ul>

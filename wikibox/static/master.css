@@ -5,12 +5,23 @@ body {
   grid-template-columns: 15% auto;
   grid-template-rows: auto;
   grid-template-areas: 
+    ". header"
     "nav main"
     "nav footer";
 }
 
+header {
+  grid-area: header;
+  border-bottom: 1px solid gray;
+}
+
 nav {
   grid-area: nav;
+  border-right: 1px solid gray;
+}
+
+nav ul {
+  list-style: none;
 }
 
 main {
@@ -21,6 +32,3 @@ footer{
   grid-area: footer;
 }
 
-nav, main {
-  border: 1px solid red;
-}
