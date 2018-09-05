@@ -1,16 +1,23 @@
 <html>
-  <body>
-    <div class="header">
-      <%block name="header"/>
-    </div>
+<head>
+  <%block name="header"/>
+  <link rel="stylesheet" href="/static/master.css" />
+</head>
+<body>
+  <nav>
+    <ul>
+	  <li>aaaa</li>
+	</ul>
+  </nav>
+  <main>
+  	${self.body()}
+  </main>
 
-    ${self.body()}
-
-    <div class="footer">
-      <%block name="footer">
-        this is the footer
-      </%block>
-    </div>
-  </body>
+  <footer>
+    <%block name="footer">
+      this is the footer
+    </%block>
+  </footer>
+</body>
 </html>
 

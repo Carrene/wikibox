@@ -1,6 +1,6 @@
 <%inherit file="master.mak"/>
 
-<%block name="header">
+<%block name="head">
     <title>WikiBox</title>
 </%block>
 
