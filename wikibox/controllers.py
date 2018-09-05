@@ -56,7 +56,10 @@ class Root(Controller):
             filename = ''
 
         if filename:
-            html = markdown2.markdown_path(physical_path)
+            html = markdown2.markdown_path(
+                physical_path,
+                extras=['tables', 'fenced-code-blocks']
+            )
         else:
             html = ''
 

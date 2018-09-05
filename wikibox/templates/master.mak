@@ -2,6 +2,7 @@
 <head>
   <%block name="header"/>
   <link rel="stylesheet" href="/static/master.css" />
+  <link rel="stylesheet" href="/static/syntax-vim.css" />
 </head>
 <body>
   <header><h4>
