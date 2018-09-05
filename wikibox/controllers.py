@@ -1,8 +1,9 @@
 import os
-from os.path import dirname, abspath, join, isdir
+from os.path import dirname, abspath, join, isdir, split
 
 from nanohttp import Controller, context, Static, settings, HTTPNotFound, \
     HTTPForbidden
+import markdown2
 
 from .templating import template
 
@@ -24,11 +25,8 @@ class Node:
 class Root(Controller):
     static = Static(join(here, 'static'))
 
-    @template('index.mak')
-    def index(self, *args):
-        root = settings.root
-        virtual_path = '/' + '/'.join(args)
-        physical_path = join(root, virtual_path)
+    def get_nodes(self, virtual_path):
+        physical_path = join(settings.root, virtual_path)
 
         if '..' in virtual_path:
             raise HTTPForbidden()
@@ -44,8 +42,27 @@ class Root(Controller):
         except PermissionError:
             raise HTTPForbidden()
 
+        nodes = [n for n in nodes if n.isdirectory or n.name.endswith('.md')]
+        return nodes
+
+    @template('index.mak')
+    def index(self, *args):
+        virtual_path = '/'.join(args)
+        physical_path = join(settings.root, virtual_path)
+
+        if not isdir(physical_path):
+            virtual_path, filename = split(virtual_path)
+        else:
+            filename = ''
+
+        if filename:
+            html = markdown2.markdown_path(physical_path)
+        else:
+            html = ''
+
         return dict(
-            nodes=nodes,
-            virtual_path=virtual_path
+            nodes=self.get_nodes(virtual_path),
+            virtual_path=f'/{virtual_path}/{filename}',
+            content=html
         )
 

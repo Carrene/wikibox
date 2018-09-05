@@ -13,6 +13,7 @@ dependencies = [
     'mako',
     'nanohttp >= 1.5',
     'gunicorn',
+    'markdown2',
 ]
 
 
