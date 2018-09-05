@@ -14,8 +14,8 @@ here = abspath(dirname(__file__))
 class Node:
     def __init__(self, parent, name):
         self.parent = parent
-        self.name = name
         self.isdirectory = isdir(join(settings.root, parent, name))
+        self.name = f'{name}{"/" if self.isdirectory else ""}'
 
     @property
     def path(self):
@@ -60,9 +60,17 @@ class Root(Controller):
         else:
             html = ''
 
+        parent_nodes = []
+        if virtual_path:
+            parents = virtual_path.split('/')
+            for i, p in enumerate(parents):
+                parent_nodes.append(Node('/'.join(parents[:i]), p))
+
         return dict(
             nodes=self.get_nodes(virtual_path),
-            virtual_path=f'/{virtual_path}/{filename}',
+            directory=virtual_path,
+            filename=filename,
+            parents=parent_nodes,
             content=html
         )
 

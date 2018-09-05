@@ -4,7 +4,7 @@ from nanohttp import settings, configure as nanohttp_configure
 
 BUILTIN_CONFIGURATION = '''
 
-root: /home/vahid/workspace/wolf/data
+root: /home/vahid/workspace/
 
 '''
 
