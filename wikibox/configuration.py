@@ -22,5 +22,5 @@ def configure(config=None, files=None, context=None, force=False):
 
     if files:
         for f in files:
-            settings.load_files(f)
+            settings.load_file(f)
 
