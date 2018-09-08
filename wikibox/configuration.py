@@ -1,10 +1,9 @@
-
 from nanohttp import settings, configure as nanohttp_configure
 
 
-BUILTIN_CONFIGURATION = '''
+BUILTIN_CONFIGURATION = f'''
 
-root: /home/vahid/workspace/
+root: .
 
 '''
 

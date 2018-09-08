@@ -25,5 +25,10 @@ setup(
     install_requires=dependencies,
     packages=find_packages('.', exclude=['*.tests']),
     include_package_data=True,
+    entry_points={
+        'console_scripts': [
+            'wikibox = wikibox.cli:main'
+        ]
+    },
 )
 
