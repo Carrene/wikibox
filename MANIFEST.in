@@ -1,1 +1,2 @@
 include wikibox/templates/*.mak
+include wikibox/static/*.css

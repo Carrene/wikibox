@@ -1,7 +1,7 @@
 from nanohttp import settings, configure as nanohttp_configure
 
 
-BUILTIN_CONFIGURATION = f'''
+BUILTIN_CONFIGURATION = '''
 
 root: .
 
