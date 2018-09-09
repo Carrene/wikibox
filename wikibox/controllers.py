@@ -47,23 +47,27 @@ class Root(Controller):
 
     @template('index.mak')
     def index(self, *args):
-        virtual_path = '/'.join(args)
-        physical_path = join(settings.root, virtual_path)
+        given_path = '/'.join(args)
+        physical_path = join(settings.root, given_path)
 
         if not isdir(physical_path):
-            if not virtual_path.endswith('.md'):
-                raise HTTPNotFound()
+            if not given_path.endswith('.md'):
+                raise HTTPForbidden(f'File Not allowed: {given_path}')
 
-            virtual_path, filename = split(virtual_path)
+            virtual_path, filename = split(given_path)
         else:
+            virtual_path = given_path
             filename = ''
 
-
         if filename:
-            html = markdown2.markdown_path(
-                physical_path,
-                extras=['tables', 'fenced-code-blocks']
-            )
+            try:
+                html = markdown2.markdown_path(
+                    physical_path,
+                    extras=['tables', 'fenced-code-blocks']
+                )
+            except FileNotFoundError:
+                raise HTTPNotFound(f'File Not Found: {given_path}')
+
         else:
             html = ''
 
