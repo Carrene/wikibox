@@ -51,9 +51,13 @@ class Root(Controller):
         physical_path = join(settings.root, virtual_path)
 
         if not isdir(physical_path):
+            if not virtual_path.endswith('.md'):
+                raise HTTPNotFound()
+
             virtual_path, filename = split(virtual_path)
         else:
             filename = ''
+
 
         if filename:
             html = markdown2.markdown_path(
