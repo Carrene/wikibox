@@ -2,8 +2,9 @@
 body {
   margin: 0;
   display: grid;
-  grid-template-columns: 35% auto;
-  grid-template-rows: auto;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
   grid-template-areas: 
     "header header"
     "nav main"
@@ -28,6 +29,12 @@ nav ul {
 
 main {
   grid-area: main;
+  padding: 10px;
+}
+
+main table, main table tr, main table tr td, main table tr th {
+  border: 1px solid gray;
+  border-collapse: collapse;
   padding: 10px;
 }
 
