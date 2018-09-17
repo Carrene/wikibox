@@ -26,7 +26,12 @@
   <nav>
     <ul>
     %for node in nodes:
-	  <li><a href="/${node.path}">${node.name}</a></li>
+	  <li>
+	    <a href="/${node.path}">${node.name}</a>
+	    %if node.name[-1] == '/':
+	    <img src="./../static/images/chevron-right.svg" />
+	    %endif
+	  </li>
     %endfor
 	</ul>
   </nav>

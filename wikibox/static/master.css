@@ -7,9 +7,9 @@
 body {
   margin: 0;
   display: grid;
+  height: 100vh;
   grid-template-columns: minmax(500px, auto) 1fr;
-  grid-template-rows: auto 1fr;
-  height: 100%;
+  grid-template-rows: 120px calc(100vh - 120px);
   grid-template-areas:
     "header header"
     "nav main";
@@ -118,12 +118,53 @@ header h1 {
 
 nav {
   grid-area: nav;
-  border-right: 1px solid gray;
+  height: 100%;
+  overflow: auto;
+  background: #3498DB;
+}
+
+nav::-webkit-scrollbar {
+  width: 5px;
+}
+
+nav::-webkit-scrollbar-track {
+  background: #3498DB;
+}
+
+nav::-webkit-scrollbar-thumb {
+  background: #FFF;
+  border-radius: 3px;
+}
+
+nav::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+nav a {
+  color: #FFF;
+  text-decoration: none;
 }
 
 nav ul {
   list-style: none;
-  padding: 10px;
+  padding: 0 30px;
+}
+
+nav ul li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  padding: 18px;
+  font-size: 20px;
+  font-weight: 300;
+  align-items: center;
+}
+
+nav ul li img {
+  height: 10px;
+}
+
+nav ul li + li {
+  border-top: 1px solid rgba(255, 255, 255, .5);
 }
 
 /* MAIN */
