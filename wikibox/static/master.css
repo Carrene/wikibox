@@ -8,12 +8,12 @@ body {
   margin: 0;
   display: grid;
   height: 100vh;
-  grid-template-columns: minmax(500px, auto) 1fr;
+  grid-template-columns: 500px 1fr;
   grid-template-rows: 120px calc(100vh - 120px);
   grid-template-areas:
     "header header"
     "nav main";
-  color: #FFF;
+  font-family: 'Roboto', sans-serif;
 }
 
 /* HEADER */
@@ -25,6 +25,7 @@ header {
   background: #34495E;
   display: grid;
   grid-row-gap: 15px;
+  color: #FFF;
 }
 
 header a {
@@ -119,7 +120,7 @@ header h1 {
 nav {
   grid-area: nav;
   height: 100%;
-  overflow: auto;
+  overflow-y: auto;
   background: #3498DB;
 }
 
@@ -133,16 +134,15 @@ nav::-webkit-scrollbar-track {
 
 nav::-webkit-scrollbar-thumb {
   background: #FFF;
-  border-radius: 3px;
-}
-
-nav::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  border-radius: 2.5px;
 }
 
 nav a {
   color: #FFF;
   text-decoration: none;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 nav ul {
@@ -154,7 +154,7 @@ nav ul li {
   display: grid;
   grid-template-columns: 1fr auto;
   padding: 18px;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 300;
   align-items: center;
 }
@@ -171,11 +171,96 @@ nav ul li + li {
 
 main {
   grid-area: main;
-  padding: 10px;
+  height: 100%;
+  overflow: auto;
+  padding: 30px 80px;
+  box-sizing: border-box;
+  display: grid;
+  grid-row-gap: 20px;
+  justify-items: start;
 }
 
-main table, main table tr, main table tr td, main table tr th {
-  border: 1px solid gray;
+table, table thead, table tbody, table tr, table th, table td {
   border-collapse: collapse;
-  padding: 10px;
+  box-sizing: border-box;
+}
+
+table tr {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+table tr th, table tr td {
+  padding: 10px 20px;
+}
+
+table thead {
+  background: #2980B9;
+}
+
+table thead tr th {
+  border: 1px solid #FFF;
+  font-size: 18px;
+  font-weight: 300;
+  text-align: left;
+  color: #FFF;
+}
+
+table thead tr th:first-of-type {
+}
+
+table tbody {
+  font-size: 15px;
+  font-weight: 300;
+}
+
+table tbody tr:nth-of-type(odd) {
+  background: #EBEBEB;
+  border: 1px solid #FFFFFF;
+}
+
+table tbody tr:nth-of-type(even) {
+  background: #FFFFFF;
+  border: 1px solid #EBEBEB;
+}
+
+main::-webkit-scrollbar {
+  width: 5px;
+}
+
+main::-webkit-scrollbar-track {
+  background: #FFF;
+}
+
+main::-webkit-scrollbar-thumb {
+  background: #34495E;
+  border-radius: 2.5px;
+}
+
+main h2 {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+main h3 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+main p {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+main ul {
+  list-style: none;
+}
+
+main ul li {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+main hr {
+
 }

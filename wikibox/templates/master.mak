@@ -1,6 +1,7 @@
 <html>
 <head>
   <%block name="header"/>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,500,700" rel="stylesheet">
   <link rel="stylesheet" href="/static/master.css" />
   <link rel="stylesheet" href="/static/syntax-vim.css" />
 </head>
@@ -27,7 +28,7 @@
     <ul>
     %for node in nodes:
 	  <li>
-	    <a href="/${node.path}">${node.name}</a>
+	    <a href="/${node.path}" title="${node.name}">${node.name}</a>
 	    %if node.name[-1] == '/':
 	    <img src="./../static/images/chevron-right.svg" />
 	    %endif
