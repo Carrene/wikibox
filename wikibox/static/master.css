@@ -1,21 +1,120 @@
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
   display: grid;
-  grid-template-columns: minmax(10%, auto) 1fr;
-  grid-template-rows: auto 1fr auto;
+  grid-template-columns: minmax(500px, auto) 1fr;
+  grid-template-rows: auto 1fr;
   height: 100%;
-  grid-template-areas: 
+  grid-template-areas:
     "header header"
-    "nav main"
-    "nav footer";
+    "nav main";
+  color: #FFF;
 }
+
+/* HEADER */
 
 header {
   grid-area: header;
   border-bottom: 1px solid gray;
-  padding: 10px;
+  padding: 17px 30px;
+  background: #34495E;
+  display: grid;
+  grid-row-gap: 15px;
 }
+
+header a {
+  color: #FFF;
+  text-decoration: none;
+}
+
+header .breadcrumbs {
+  display: grid;
+  grid-column-gap: 5px;
+  grid-auto-flow: column;
+  justify-items: start;
+  justify-content: start;
+}
+
+header .breadcrumbs .path {
+  background-color: #3498DB;
+  position: relative;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  padding: 0 15px;
+  height: 40px;
+}
+
+header .breadcrumbs .path:not(:first-of-type) {
+  min-width: 50px;
+}
+
+header .breadcrumbs .path:first-of-type {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  background-image: url("images/home.svg");
+  background-repeat: no-repeat;
+  background-size: 17px;
+  background-position: center center;
+}
+
+header .breadcrumbs .path:first-of-type a {
+  width: 20px;
+  height: 100%;
+}
+
+header .breadcrumbs .path:first-of-type a img {
+  width: 100%;
+}
+
+header .breadcrumbs .path::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-right: none;
+  border-bottom: 20px solid transparent;
+  border-top: 20px solid transparent;
+  border-left: 10px solid #3498DB;
+  right: -10px;
+  z-index: 100;
+}
+
+header .breadcrumbs .path::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: 20px solid transparent;
+  border-top: 20px solid transparent;
+  border-left: 10px solid #34495E;
+}
+
+header .breadcrumbs .path:last-of-type {
+  background-color: #1ABC9C;
+}
+
+header .breadcrumbs .path:last-of-type::after {
+  border-left-color: #1ABC9C;
+}
+
+header .breadcrumbs .path:first-of-type::before {
+  display: none;
+}
+
+header h1 {
+  font-size: 25px;
+  font-weight: 300;
+}
+
+/* NAV */
 
 nav {
   grid-area: nav;
@@ -27,6 +126,8 @@ nav ul {
   padding: 10px;
 }
 
+/* MAIN */
+
 main {
   grid-area: main;
   padding: 10px;
@@ -37,8 +138,3 @@ main table, main table tr, main table tr td, main table tr th {
   border-collapse: collapse;
   padding: 10px;
 }
-
-footer{
-  grid-area: footer;
-}
-

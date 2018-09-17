@@ -5,13 +5,24 @@
   <link rel="stylesheet" href="/static/syntax-vim.css" />
 </head>
 <body>
-  <header><h4>
-	<a href="/">Home/</a>
-  %for p in parents:
-	<a href="/${p.path}">${p.name}</a>
-  %endfor
-  	${filename}
-  </h4></header>
+  <header>
+    <h1>WIKI.CARRENE.COM</h1>
+    <div class="breadcrumbs">
+        <div class="path">
+            <a href="/"></a>
+        </div>
+        %for p in parents:
+        <div class="path">
+	        <a href="/${p.path}">${p.name}</a>
+        </div>
+        %endfor
+        %if filename:
+  	    <div class="path file">
+  	        <p>${filename}</p>
+  	    </div>
+  	    %endif
+    </div>
+  </header>
   <nav>
     <ul>
     %for node in nodes:
