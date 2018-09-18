@@ -23,6 +23,16 @@
   	    </div>
   	    %endif
     </div>
+    %if filename:
+    <div class="actions">
+        <div>
+            <img src="./../../static/images/print.svg" alt="Print">
+        </div>
+        <div>
+            <img src="./../../static/images/pdf.svg" alt="Export as PDF">
+        </div>
+    </div>
+    %endif
   </header>
   <nav>
     <ul>
