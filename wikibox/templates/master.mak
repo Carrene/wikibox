@@ -4,6 +4,8 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,500,700" rel="stylesheet">
   <link rel="stylesheet" href="/static/master.css" />
   <link rel="stylesheet" href="/static/syntax-vim.css" />
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+  <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
 </head>
 <body>
   <header>
@@ -26,10 +28,10 @@
     %if filename:
     <div class="actions">
         <div>
-            <img src="./../../static/images/print.svg" alt="Print">
+            <img src="./../../static/images/print.svg" alt="Print" id="print">
         </div>
         <div>
-            <img src="./../../static/images/pdf.svg" alt="Export as PDF">
+            <img src="./../../static/images/pdf.svg" alt="Export as PDF" id="pdf">
         </div>
     </div>
     %endif
@@ -46,7 +48,7 @@
     %endfor
 	</ul>
   </nav>
-  <main>
+  <main id="main">
   	${self.body()}
   </main>
 
@@ -54,6 +56,8 @@
     <%block name="footer">
     </%block>
   </footer>
+
+  <script src="/static/master.js" type="text/javascript"></script>
 </body>
 </html>
 

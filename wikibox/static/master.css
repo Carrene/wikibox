@@ -25,7 +25,6 @@ header {
   background: #34495E;
   display: grid;
   grid-template-columns: 1fr auto;
-  align-items: center;
   grid-row-gap: 15px;
   color: #FFF;
 }
@@ -120,14 +119,14 @@ header h1 {
 
 header .actions {
   display: grid;
-  grid-template-columns: 50px 50px;
+  grid-template-columns: 40px 40px;
   grid-column-gap: 20px;
-  grid-template-rows: 50px;
+  grid-template-rows: 40px;
 }
 
 header .actions div {
   display: grid;
-  padding: 10px 0;
+  padding: 8px 0;
   box-sizing: border-box;
   justify-items: center;
   background: #2980B9;
