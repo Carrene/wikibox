@@ -8,7 +8,7 @@ body {
   margin: 0;
   display: grid;
   height: 100vh;
-  grid-template-columns: 500px 1fr;
+  grid-template-columns: 500px calc(100vw - 500px);
   grid-template-rows: 120px calc(100vh - 120px);
   grid-template-areas:
     "header header"
@@ -124,19 +124,6 @@ nav {
   background: #3498DB;
 }
 
-nav::-webkit-scrollbar {
-  width: 5px;
-}
-
-nav::-webkit-scrollbar-track {
-  background: #3498DB;
-}
-
-nav::-webkit-scrollbar-thumb {
-  background: #FFF;
-  border-radius: 2.5px;
-}
-
 nav a {
   color: #FFF;
   text-decoration: none;
@@ -172,10 +159,12 @@ nav ul li + li {
 main {
   grid-area: main;
   height: 100%;
+  width: 100%;
   overflow: auto;
   padding: 30px 80px;
   box-sizing: border-box;
   display: grid;
+  grid-template-columns: 100%;
   grid-row-gap: 20px;
   justify-items: start;
 }
@@ -185,16 +174,20 @@ table, table thead, table tbody, table tr, table th, table td {
   box-sizing: border-box;
 }
 
-table tr {
+main table tr {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 300px 300px;
+  width: 600px;
 }
 
-table tr th, table tr td {
+main table tr th,main  table tr td {
   padding: 10px 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-table thead {
+main table thead {
   background: #2980B9;
 }
 
@@ -204,9 +197,6 @@ table thead tr th {
   font-weight: 300;
   text-align: left;
   color: #FFF;
-}
-
-table thead tr th:first-of-type {
 }
 
 table tbody {
@@ -222,19 +212,6 @@ table tbody tr:nth-of-type(odd) {
 table tbody tr:nth-of-type(even) {
   background: #FFFFFF;
   border: 1px solid #EBEBEB;
-}
-
-main::-webkit-scrollbar {
-  width: 5px;
-}
-
-main::-webkit-scrollbar-track {
-  background: #FFF;
-}
-
-main::-webkit-scrollbar-thumb {
-  background: #34495E;
-  border-radius: 2.5px;
 }
 
 main h2 {
@@ -254,13 +231,66 @@ main p {
 
 main ul {
   list-style: none;
+  width: 100%;
 }
 
 main ul li {
   font-size: 18px;
   font-weight: 300;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-main hr {
+main .codehilite {
+  width: 100%;
+  background: #00162C;
+}
 
+main .codehilite pre {
+  overflow-x: auto;
+  padding: 20px;
+}
+
+/* SCROLLS */
+
+main::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+main::-webkit-scrollbar-track {
+  background: #FFF;
+}
+
+main::-webkit-scrollbar-thumb {
+  background: #34495E;
+  border-radius: 2.5px;
+}
+
+main *::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+main *::-webkit-scrollbar-track {
+  background: #FFF;
+}
+
+main *::-webkit-scrollbar-thumb {
+  background: #34495E;
+  border-radius: 2.5px;
+}
+
+nav::-webkit-scrollbar {
+  width: 5px;
+}
+
+nav::-webkit-scrollbar-track {
+  background: #3498DB;
+}
+
+nav::-webkit-scrollbar-thumb {
+  background: #FFF;
+  border-radius: 2.5px;
 }
