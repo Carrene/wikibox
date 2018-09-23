@@ -193,6 +193,7 @@ main {
   grid-template-columns: 100%;
   grid-row-gap: 20px;
   justify-items: start;
+  align-content: start;
 }
 
 table, table thead, table tbody, table tr, table th, table td {
