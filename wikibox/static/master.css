@@ -172,6 +172,11 @@ nav ul li {
   align-items: center;
 }
 
+nav ul li span.verb, nav ul li span.subject {
+  font-weight: 500;
+  font-size: 17px;
+}
+
 nav ul li img {
   height: 10px;
 }

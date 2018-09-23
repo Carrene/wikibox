@@ -40,7 +40,15 @@
     <ul>
     %for node in nodes:
 	  <li>
-	    <a href="/${node.path}" title="${node.title}">${node.title}</a>
+	    <a href="/${node.path}" title="${node.verb} ${node.subject} ${node.title}">
+	        %if node.verb:
+	        <span class="verb">${node.verb}</span>
+	        %endif
+	        %if node.subject:
+	        <span class="subject">${node.subject}</span>
+	        %endif
+	        <span>${node.title}</span>
+	    </a>
 	    %if node.isdirectory:
 	    <img src="./../static/images/chevron-right.svg" />
 	    %endif

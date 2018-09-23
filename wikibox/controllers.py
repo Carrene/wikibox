@@ -16,23 +16,25 @@ class Node:
     verb = None
     subject = None
     title = None
+
     def __init__(self, parent, name):
         self.parent = parent
         self.isdirectory = isdir(join(settings.root, parent, name))
         self.realname = name
 
-        if not self.isdirectory:
-            name = re.sub('[-]+', ' ', name)
-            if name.endswith('.md'):
-                name = name[:-3]
-
+        if not self.isdirectory and not self.hidden:
+            name = re.sub('[-]+', ' ', name)[:-3]
             self.verb, self.subject, self.title = name.split(' ', 2)
         else:
             self.title = name
 
     @property
     def path(self):
-        return join(self.parent, self.title)
+        return join(self.parent, self.realname)
+
+    @property
+    def hidden(self):
+        return re.search('[-]{2}.*\.md$', self.realname) is None
 
 
 class Root(Controller):
@@ -56,7 +58,7 @@ class Root(Controller):
             raise HTTPForbidden()
 
         nodes = [
-            n for n in nodes if n.isdirectory or n.realname.endswith('.md')
+            n for n in nodes if n.isdirectory or not n.hidden
         ]
         return nodes
 
