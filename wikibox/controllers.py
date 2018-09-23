@@ -20,15 +20,19 @@ class Node:
         self.parent = parent
         self.isdirectory = isdir(join(settings.root, parent, name))
         self.realname = name
-        name = re.sub('[-]+', ' ', name)
-        if name.endswith('.md'):
-            name = name[:-3]
 
-        self.name = name
+        if not self.isdirectory:
+            name = re.sub('[-]+', ' ', name)
+            if name.endswith('.md'):
+                name = name[:-3]
+
+            self.verb, self.subject, self.title = name.split(' ', 2)
+        else:
+            self.title = name
 
     @property
     def path(self):
-        return join(self.parent, self.name)
+        return join(self.parent, self.title)
 
 
 class Root(Controller):
@@ -43,7 +47,7 @@ class Root(Controller):
         try:
             nodes = sorted(
                 (Node(virtual_path, i) for i in os.listdir(physical_path)),
-                key=lambda n: (not n.isdirectory, n.name)
+                key=lambda n: (not n.isdirectory, n.title)
             )
         except FileNotFoundError:
             raise HTTPNotFound()
@@ -51,7 +55,9 @@ class Root(Controller):
         except PermissionError:
             raise HTTPForbidden()
 
-        nodes = [n for n in nodes if n.isdirectory or n.realname.endswith('.md')]
+        nodes = [
+            n for n in nodes if n.isdirectory or n.realname.endswith('.md')
+        ]
         return nodes
 
     @template('index.mak')

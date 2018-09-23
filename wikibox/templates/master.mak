@@ -16,7 +16,7 @@
         </div>
         %for p in parents:
         <div class="path">
-	        <a href="/${p.path}">${p.name}</a>
+	        <a href="/${p.path}">${p.title}</a>
         </div>
         %endfor
         %if filename:
@@ -40,7 +40,7 @@
     <ul>
     %for node in nodes:
 	  <li>
-	    <a href="/${node.path}" title="${node.name}">${node.name}</a>
+	    <a href="/${node.path}" title="${node.title}">${node.title}</a>
 	    %if node.isdirectory:
 	    <img src="./../static/images/chevron-right.svg" />
 	    %endif
