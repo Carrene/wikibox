@@ -56,6 +56,10 @@ header .breadcrumbs .path:not(:first-of-type) {
   min-width: 50px;
 }
 
+header .breadcrumbs .path:not(:first-of-type) a {
+  margin-left: 10px;
+}
+
 header .breadcrumbs .path:first-of-type {
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
