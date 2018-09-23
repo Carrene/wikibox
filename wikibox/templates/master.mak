@@ -41,7 +41,7 @@
     %for node in nodes:
 	  <li>
 	    <a href="/${node.path}" title="${node.name}">${node.name}</a>
-	    %if node.name[-1] == '/':
+	    %if node.isdirectory:
 	    <img src="./../static/images/chevron-right.svg" />
 	    %endif
 	  </li>

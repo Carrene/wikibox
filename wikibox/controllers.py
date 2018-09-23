@@ -1,3 +1,4 @@
+import re
 import os
 from os.path import dirname, abspath, join, isdir, split
 
@@ -12,10 +13,18 @@ here = abspath(dirname(__file__))
 
 
 class Node:
+    verb = None
+    subject = None
+    title = None
     def __init__(self, parent, name):
         self.parent = parent
         self.isdirectory = isdir(join(settings.root, parent, name))
-        self.name = f'{name}{"/" if self.isdirectory else ""}'
+        self.realname = name
+        name = re.sub('[-]+', ' ', name)
+        if name.endswith('.md'):
+            name = name[:-3]
+
+        self.name = name
 
     @property
     def path(self):
@@ -42,7 +51,7 @@ class Root(Controller):
         except PermissionError:
             raise HTTPForbidden()
 
-        nodes = [n for n in nodes if n.isdirectory or n.name.endswith('.md')]
+        nodes = [n for n in nodes if n.isdirectory or n.realname.endswith('.md')]
         return nodes
 
     @template('index.mak')
