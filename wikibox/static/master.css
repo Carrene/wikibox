@@ -56,6 +56,10 @@ header .breadcrumbs .path:not(:first-of-type) {
   min-width: 50px;
 }
 
+header .breadcrumbs .path:not(:first-of-type) a {
+  margin-left: 10px;
+}
+
 header .breadcrumbs .path:first-of-type {
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
@@ -168,6 +172,11 @@ nav ul li {
   align-items: center;
 }
 
+nav ul li span.verb, nav ul li span.subject {
+  font-weight: 500;
+  font-size: 17px;
+}
+
 nav ul li img {
   height: 10px;
 }
@@ -189,6 +198,7 @@ main {
   grid-template-columns: 100%;
   grid-row-gap: 20px;
   justify-items: start;
+  align-content: start;
 }
 
 table, table thead, table tbody, table tr, table th, table td {

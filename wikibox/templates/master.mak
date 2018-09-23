@@ -16,7 +16,7 @@
         </div>
         %for p in parents:
         <div class="path">
-	        <a href="/${p.path}">${p.name}</a>
+	        <a href="/${p.path}">${p.title}</a>
         </div>
         %endfor
         %if filename:
@@ -40,8 +40,16 @@
     <ul>
     %for node in nodes:
 	  <li>
-	    <a href="/${node.path}" title="${node.name}">${node.name}</a>
-	    %if node.name[-1] == '/':
+	    <a href="/${node.path}" title="${node.verb} ${node.subject} ${node.title}">
+	        %if node.verb:
+	        <span class="verb">${node.verb}</span>
+	        %endif
+	        %if node.subject:
+	        <span class="subject">${node.subject}</span>
+	        %endif
+	        <span>${node.title}</span>
+	    </a>
+	    %if node.isdirectory:
 	    <img src="./../static/images/chevron-right.svg" />
 	    %endif
 	  </li>
