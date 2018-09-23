@@ -11,7 +11,7 @@ with open(join(dirname(__file__), 'wikibox', '__init__.py')) as v_file:
 
 dependencies = [
     'mako',
-    'nanohttp >= 1.5',
+    'nanohttp >= 1.9.11',
     'gunicorn',
     'markdown2',
     'pygments',
