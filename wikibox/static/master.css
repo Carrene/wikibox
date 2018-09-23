@@ -1,44 +1,318 @@
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
   display: grid;
-  grid-template-columns: minmax(10%, auto) 1fr;
-  grid-template-rows: auto 1fr auto;
-  height: 100%;
-  grid-template-areas: 
+  height: 100vh;
+  grid-template-columns: 500px calc(100vw - 500px);
+  grid-template-rows: 120px calc(100vh - 120px);
+  grid-template-areas:
     "header header"
-    "nav main"
-    "nav footer";
+    "nav main";
+  font-family: 'Roboto', sans-serif;
 }
+
+/* HEADER */
 
 header {
   grid-area: header;
   border-bottom: 1px solid gray;
-  padding: 10px;
+  padding: 17px 30px;
+  background: #34495E;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-row-gap: 15px;
+  color: #FFF;
 }
+
+header a {
+  color: #FFF;
+  text-decoration: none;
+}
+
+header .breadcrumbs {
+  display: grid;
+  grid-column-gap: 5px;
+  grid-auto-flow: column;
+  justify-items: start;
+  justify-content: start;
+}
+
+header .breadcrumbs .path {
+  background-color: #3498DB;
+  position: relative;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  padding: 0 15px;
+  height: 40px;
+}
+
+header .breadcrumbs .path:not(:first-of-type) {
+  min-width: 50px;
+}
+
+header .breadcrumbs .path:first-of-type {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  background-image: url("images/home.svg");
+  background-repeat: no-repeat;
+  background-size: 17px;
+  background-position: center center;
+}
+
+header .breadcrumbs .path:first-of-type a {
+  width: 20px;
+  height: 100%;
+}
+
+header .breadcrumbs .path:first-of-type a img {
+  width: 100%;
+}
+
+header .breadcrumbs .path::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-right: none;
+  border-bottom: 20px solid transparent;
+  border-top: 20px solid transparent;
+  border-left: 10px solid #3498DB;
+  right: -10px;
+  z-index: 100;
+}
+
+header .breadcrumbs .path::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: 20px solid transparent;
+  border-top: 20px solid transparent;
+  border-left: 10px solid #34495E;
+}
+
+header .breadcrumbs .path:last-of-type {
+  background-color: #1ABC9C;
+}
+
+header .breadcrumbs .path:last-of-type::after {
+  border-left-color: #1ABC9C;
+}
+
+header .breadcrumbs .path:first-of-type::before {
+  display: none;
+}
+
+header h1 {
+  font-size: 25px;
+  font-weight: 300;
+  grid-column: 1 / -1;
+}
+
+header .actions {
+  display: grid;
+  grid-template-columns: 40px 40px;
+  grid-column-gap: 20px;
+  grid-template-rows: 40px;
+}
+
+header .actions div {
+  display: grid;
+  padding: 8px 0;
+  box-sizing: border-box;
+  justify-items: center;
+  background: #2980B9;
+  cursor: pointer;
+}
+
+header .actions div img {
+  height: 100%;
+}
+
+/* NAV */
 
 nav {
   grid-area: nav;
-  border-right: 1px solid gray;
+  height: 100%;
+  overflow-y: auto;
+  background: #3498DB;
+}
+
+nav a {
+  color: #FFF;
+  text-decoration: none;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 nav ul {
   list-style: none;
-  padding: 10px;
+  padding: 0 30px;
 }
+
+nav ul li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  padding: 18px;
+  font-size: 15px;
+  font-weight: 300;
+  align-items: center;
+}
+
+nav ul li img {
+  height: 10px;
+}
+
+nav ul li + li {
+  border-top: 1px solid rgba(255, 255, 255, .5);
+}
+
+/* MAIN */
 
 main {
   grid-area: main;
-  padding: 10px;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  padding: 30px 80px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-row-gap: 20px;
+  justify-items: start;
 }
 
-main table, main table tr, main table tr td, main table tr th {
-  border: 1px solid gray;
+table, table thead, table tbody, table tr, table th, table td {
   border-collapse: collapse;
-  padding: 10px;
+  box-sizing: border-box;
 }
 
-footer{
-  grid-area: footer;
+main table tr {
+  display: grid;
+  grid-template-columns: 300px 300px;
+  width: 600px;
 }
 
+main table tr th,main  table tr td {
+  padding: 10px 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+main table thead {
+  background: #2980B9;
+}
+
+table thead tr th {
+  border: 1px solid #FFF;
+  font-size: 18px;
+  font-weight: 300;
+  text-align: left;
+  color: #FFF;
+}
+
+table tbody {
+  font-size: 15px;
+  font-weight: 300;
+}
+
+table tbody tr:nth-of-type(odd) {
+  background: #EBEBEB;
+  border: 1px solid #FFFFFF;
+}
+
+table tbody tr:nth-of-type(even) {
+  background: #FFFFFF;
+  border: 1px solid #EBEBEB;
+}
+
+main h2 {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+main h3 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+main p {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+main ul {
+  list-style: none;
+  width: 100%;
+}
+
+main ul li {
+  font-size: 18px;
+  font-weight: 300;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+main .codehilite {
+  width: 100%;
+  background: #00162C;
+}
+
+main .codehilite pre {
+  overflow-x: auto;
+  padding: 20px;
+}
+
+/* SCROLLS */
+
+main::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+main::-webkit-scrollbar-track {
+  background: #FFF;
+}
+
+main::-webkit-scrollbar-thumb {
+  background: #34495E;
+  border-radius: 2.5px;
+}
+
+main *::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+main *::-webkit-scrollbar-track {
+  background: #FFF;
+}
+
+main *::-webkit-scrollbar-thumb {
+  background: #34495E;
+  border-radius: 2.5px;
+}
+
+nav::-webkit-scrollbar {
+  width: 5px;
+}
+
+nav::-webkit-scrollbar-track {
+  background: #3498DB;
+}
+
+nav::-webkit-scrollbar-thumb {
+  background: #FFF;
+  border-radius: 2.5px;
+}
