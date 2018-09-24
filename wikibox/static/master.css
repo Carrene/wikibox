@@ -326,3 +326,25 @@ nav::-webkit-scrollbar-thumb {
   background: #FFF;
   border-radius: 2.5px;
 }
+
+@media print {
+  body {
+    grid-template-columns: 100%;
+    grid-template-rows: 100%;
+    color: black !important;
+  }
+
+  header, footer, nav, hr {
+    display: none !important;
+  }
+
+  main {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+  }
+
+  table, tbody, thead, td, tr, th {
+    border: 1px solid black;
+    color: black !important;
+  }
+}
