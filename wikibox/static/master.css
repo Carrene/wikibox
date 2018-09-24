@@ -43,7 +43,7 @@ header .breadcrumbs {
 }
 
 header .breadcrumbs .path {
-  background-color: #3498DB;
+  background-color: #2980B9;
   position: relative;
   display: grid;
   align-items: center;
@@ -61,6 +61,7 @@ header .breadcrumbs .path:not(:first-of-type) a {
 }
 
 header .breadcrumbs .path:first-of-type {
+  background-color: #3498DB;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
   background-image: url("images/home.svg");
@@ -89,6 +90,10 @@ header .breadcrumbs .path::after {
   border-left: 10px solid #3498DB;
   right: -10px;
   z-index: 100;
+}
+
+header .breadcrumbs .path:not(:first-of-type)::after {
+  border-left-color: #2980B9;
 }
 
 header .breadcrumbs .path::before {
@@ -146,7 +151,6 @@ header .actions div img {
 nav {
   grid-area: nav;
   height: 100%;
-  overflow-y: auto;
   background: #3498DB;
 }
 
@@ -161,15 +165,22 @@ nav a {
 nav ul {
   list-style: none;
   padding: 0 30px;
+  overflow-y: auto;
+  height: 100%;
+  margin-right: 5px;
 }
 
 nav ul li {
   display: grid;
   grid-template-columns: 1fr auto;
-  padding: 18px;
+  padding: 18px 0;
   font-size: 15px;
   font-weight: 300;
   align-items: center;
+}
+
+nav ul li span.selected {
+  color: #00FFCD;
 }
 
 nav ul li span.verb, nav ul li span.subject {
@@ -190,7 +201,7 @@ nav ul li + li {
 main {
   grid-area: main;
   height: 100%;
-  width: 100%;
+  width: calc(100% - 5px);
   overflow: auto;
   padding: 30px 80px;
   box-sizing: border-box;
@@ -314,15 +325,15 @@ main *::-webkit-scrollbar-thumb {
   border-radius: 2.5px;
 }
 
-nav::-webkit-scrollbar {
+nav ul::-webkit-scrollbar {
   width: 5px;
 }
 
-nav::-webkit-scrollbar-track {
+nav ul::-webkit-scrollbar-track {
   background: #3498DB;
 }
 
-nav::-webkit-scrollbar-thumb {
+nav ul::-webkit-scrollbar-thumb {
   background: #FFF;
   border-radius: 2.5px;
 }
