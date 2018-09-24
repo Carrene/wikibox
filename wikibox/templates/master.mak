@@ -40,14 +40,18 @@
     <ul>
     %for node in nodes:
 	  <li>
-	    <a href="/${node.path}" title="${node.verb} ${node.subject} ${node.title}">
-	        %if node.verb:
-	        <span class="verb">${node.verb}</span>
+	    <a href="/${node.path}" title="${node.realname}">
+	        %if filename == node.realname:
+                <span class="verb selected">${node.verb}</span>
+                <span class="subject selected">${node.subject}</span>
+                <span class="selected">${node.title}</span>
+	        %else:
+                %if not node.isdirectory:
+                    <span class="verb">${node.verb}</span>
+                    <span class="subject">${node.subject}</span>
+                %endif
+                <span>${node.title}</span>
 	        %endif
-	        %if node.subject:
-	        <span class="subject">${node.subject}</span>
-	        %endif
-	        <span>${node.title}</span>
 	    </a>
 	    %if node.isdirectory:
 	    <img src="./../static/images/chevron-right.svg" />
