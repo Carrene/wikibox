@@ -83,11 +83,8 @@ class Root(Controller):
                     extras=[
                         'tables', 
                         'fenced-code-blocks', 
-                        'header-ids', 
-                        'link-patterns',
-                        'html-classes',
+                        'header-ids',
                         'toc',
-
                     ]
                 )
             except FileNotFoundError:

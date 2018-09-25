@@ -216,6 +216,11 @@ main {
   align-content: start;
 }
 
+main a {
+  text-decoration: none;
+  color: #000
+}
+
 table, table thead, table tbody, table tr, table th, table td {
   border-collapse: collapse;
   box-sizing: border-box;
