@@ -14,11 +14,8 @@ if (headers.length) {
     // Adding the legend icon
 
     if (textNode.substringData(0, 4) === 'LIST') {
-      let urlSections = window.location.href.split('/')
-      urlSections.pop()
-      let baseUrl = urlSections.join('/')
       let legendLinkElement = document.createElement('a')
-      legendLinkElement.setAttribute('href', `${baseUrl}/LEGEND-restfulpy--v*.md?nonav=true`)
+      legendLinkElement.setAttribute('href', `LEGEND-restfulpy--v*.md?nonav=true`)
       legendLinkElement.setAttribute('target', '_blank')
       let helpIcon = document.createElement('img')
       helpIcon.setAttribute('src', `${window.location.origin}/static/images/help.svg`)
