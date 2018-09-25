@@ -184,12 +184,8 @@ nav ul li span.verb, nav ul li span.subject {
   font-size: 17px;
 }
 
-nav ul li span.verb {
-  color: #4C00FF;
-}
-
-nav ul li span.selected {
-  color: #00FFCD;
+nav ul li span.verb, nav ul li span.selected {
+  color: #FDD835;
 }
 
 nav ul li img {
