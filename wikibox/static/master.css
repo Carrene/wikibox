@@ -262,6 +262,18 @@ table tbody tr:nth-of-type(even) {
   border: 1px solid #EBEBEB;
 }
 
+main h1, main h2, main h3, main h4, main h5, main h6 {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  position: relative;
+  align-items: center;
+  grid-column-gap: 10px;
+}
+
+main h1 img, main h2 img, main h3 img, main h4 img, main h5 img, main h6 img {
+  height: 18px;
+}
+
 main h2 {
   font-size: 25px;
   font-weight: 700;

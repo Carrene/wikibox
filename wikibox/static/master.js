@@ -1,16 +1,34 @@
 
-let pdfButton = document.getElementById('pdf')
-let printButton = document.getElementById('print')
 let headers = document.querySelectorAll('main h1, main h2, main h3, main h4')
-for (header of headers) {
-  let textNode = document.createTextNode(header.innerText)
-  let headerId = header.id
-  let link = document.createElement('a')
-  header.innerText = ''
-  link.appendChild(textNode)
-  link.setAttribute('href', `#${headerId}`)
-  header.appendChild(link)
+
+if (headers.length) {
+  for (header of headers) {
+    let textNode = document.createTextNode(header.innerText)
+    let headerId = header.id
+    let link = document.createElement('a')
+    header.innerText = ''
+    link.appendChild(textNode)
+    link.setAttribute('href', `#${headerId}`)
+    header.appendChild(link)
+
+    // Adding the legend icon
+
+    if (textNode.substringData(0, 4) === 'LIST') {
+      let urlSections = window.location.href.split('/')
+      urlSections.pop()
+      let baseUrl = urlSections.join('/')
+      let legendLinkElement = document.createElement('a')
+      legendLinkElement.setAttribute('href', `${baseUrl}/LEGEND-restfulpy--v*.md?nonav=true`)
+      legendLinkElement.setAttribute('target', '_blank')
+      let helpIcon = document.createElement('img')
+      helpIcon.setAttribute('src', `${window.location.origin}/static/images/help.svg`)
+      legendLinkElement.appendChild(helpIcon)
+      header.appendChild(legendLinkElement)
+    }
+  }
 }
+
+let pdfButton = document.getElementById('pdf')
 
 if (pdfButton) {
   pdfButton.addEventListener('click', () => {
@@ -29,6 +47,8 @@ if (pdfButton) {
     doc.save(`${filename}.pdf`)
   })
 }
+
+let printButton = document.getElementById('print')
 
 if (printButton) {
   printButton.addEventListener('click', () => {

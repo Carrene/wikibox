@@ -1,6 +1,7 @@
 import re
 import os
 from os.path import dirname, abspath, join, isdir, split
+from glob import glob
 
 from nanohttp import Controller, context, Static, settings, HTTPNotFound, \
     HTTPForbidden
@@ -49,7 +50,13 @@ class Root(Controller):
         try:
             nodes = sorted(
                 (Node(virtual_path, i) for i in os.listdir(physical_path)),
-                key=lambda n: (not n.isdirectory, n.title)
+                key=lambda n: (
+                    n.verb == 'LEGEND',
+                    not n.isdirectory,
+                    n.subject,
+                    n.verb,
+                    n.title
+                )
             )
         except FileNotFoundError:
             raise HTTPNotFound()
@@ -66,6 +73,11 @@ class Root(Controller):
     def index(self, *args):
         given_path = '/'.join(args)
         physical_path = join(settings.root, given_path)
+        if 'LEGEND-restfulpy--v*.md' in physical_path:
+            globs = glob(physical_path)
+            if not len(globs):
+                raise HTTPNotFound()
+            physical_path = globs[0]
 
         if not isdir(physical_path):
             if not given_path.endswith('.md'):
@@ -104,6 +116,7 @@ class Root(Controller):
             directory=virtual_path,
             filename=filename,
             parents=parent_nodes,
-            content=html
+            content=html,
+            hide_navigation=context.query.get('nonav')
         )
 
