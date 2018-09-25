@@ -43,7 +43,7 @@ header .breadcrumbs {
 }
 
 header .breadcrumbs .path {
-  background-color: #3498DB;
+  background-color: #2980B9;
   position: relative;
   display: grid;
   align-items: center;
@@ -61,6 +61,7 @@ header .breadcrumbs .path:not(:first-of-type) a {
 }
 
 header .breadcrumbs .path:first-of-type {
+  background-color: #3498DB;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
   background-image: url("images/home.svg");
@@ -89,6 +90,10 @@ header .breadcrumbs .path::after {
   border-left: 10px solid #3498DB;
   right: -10px;
   z-index: 100;
+}
+
+header .breadcrumbs .path:not(:first-of-type)::after {
+  border-left-color: #2980B9;
 }
 
 header .breadcrumbs .path::before {
@@ -146,7 +151,6 @@ header .actions div img {
 nav {
   grid-area: nav;
   height: 100%;
-  overflow-y: auto;
   background: #3498DB;
 }
 
@@ -161,12 +165,15 @@ nav a {
 nav ul {
   list-style: none;
   padding: 0 30px;
+  overflow-y: auto;
+  height: 100%;
+  margin-right: 5px;
 }
 
 nav ul li {
   display: grid;
   grid-template-columns: 1fr auto;
-  padding: 18px;
+  padding: 18px 0;
   font-size: 15px;
   font-weight: 300;
   align-items: center;
@@ -175,6 +182,14 @@ nav ul li {
 nav ul li span.verb, nav ul li span.subject {
   font-weight: 500;
   font-size: 17px;
+}
+
+nav ul li span.verb {
+  color: #4C00FF;
+}
+
+nav ul li span.selected {
+  color: #00FFCD;
 }
 
 nav ul li img {
@@ -190,7 +205,7 @@ nav ul li + li {
 main {
   grid-area: main;
   height: 100%;
-  width: 100%;
+  width: calc(100% - 5px);
   overflow: auto;
   padding: 30px 80px;
   box-sizing: border-box;
@@ -199,6 +214,11 @@ main {
   grid-row-gap: 20px;
   justify-items: start;
   align-content: start;
+}
+
+main a {
+  text-decoration: none;
+  color: #000
 }
 
 table, table thead, table tbody, table tr, table th, table td {
@@ -314,15 +334,37 @@ main *::-webkit-scrollbar-thumb {
   border-radius: 2.5px;
 }
 
-nav::-webkit-scrollbar {
+nav ul::-webkit-scrollbar {
   width: 5px;
 }
 
-nav::-webkit-scrollbar-track {
+nav ul::-webkit-scrollbar-track {
   background: #3498DB;
 }
 
-nav::-webkit-scrollbar-thumb {
+nav ul::-webkit-scrollbar-thumb {
   background: #FFF;
   border-radius: 2.5px;
+}
+
+@media print {
+  body {
+    grid-template-columns: 100%;
+    grid-template-rows: 100%;
+    color: black !important;
+  }
+
+  header, footer, nav, hr {
+    display: none !important;
+  }
+
+  main {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+  }
+
+  table, tbody, thead, td, tr, th {
+    border: 1px solid black;
+    color: black !important;
+  }
 }

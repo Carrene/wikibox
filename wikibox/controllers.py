@@ -80,7 +80,12 @@ class Root(Controller):
             try:
                 html = markdown2.markdown_path(
                     physical_path,
-                    extras=['tables', 'fenced-code-blocks']
+                    extras=[
+                        'tables', 
+                        'fenced-code-blocks', 
+                        'header-ids',
+                        'toc',
+                    ]
                 )
             except FileNotFoundError:
                 raise HTTPNotFound(f'File Not Found: {given_path}')
