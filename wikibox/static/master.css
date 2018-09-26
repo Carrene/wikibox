@@ -8,12 +8,19 @@ body {
   margin: 0;
   display: grid;
   height: 100vh;
-  grid-template-columns: 500px calc(100vw - 500px);
   grid-template-rows: 120px calc(100vh - 120px);
   grid-template-areas:
     "header header"
     "nav main";
   font-family: 'Roboto', sans-serif;
+}
+
+body.with-nav {
+  grid-template-columns: 500px calc(100vw - 500px);
+}
+
+body.no-nav {
+  grid-template-columns: auto 100vw;
 }
 
 /* HEADER */
@@ -222,10 +229,9 @@ table, table thead, table tbody, table tr, table th, table td {
   box-sizing: border-box;
 }
 
-main table tr {
-  display: grid;
-  grid-template-columns: 300px 300px;
-  width: 600px;
+main table tr th, main table tr td {
+  width: 300px;
+  max-width: 300px;
 }
 
 main table tr th,main  table tr td {
@@ -262,7 +268,12 @@ table tbody tr:nth-of-type(even) {
   border: 1px solid #EBEBEB;
 }
 
-main h1, main h2, main h3, main h4, main h5, main h6 {
+main h1,
+main h2,
+main h3,
+main h4,
+main h5,
+main h6 {
   display: grid;
   grid-template-columns: 1fr auto;
   position: relative;
@@ -270,7 +281,32 @@ main h1, main h2, main h3, main h4, main h5, main h6 {
   grid-column-gap: 10px;
 }
 
-main h1 img, main h2 img, main h3 img, main h4 img, main h5 img, main h6 img {
+main h1 a.link-icon,
+main h2 a.link-icon,
+main h3 a.link-icon,
+main h4 a.link-icon,
+main h5 a.link-icon,
+main h6 a.link-icon {
+    opacity: 0;
+    position: absolute;
+    right: calc(100% + 10px);
+}
+
+main h1:hover a.link-icon,
+main h2:hover a.link-icon,
+main h3:hover a.link-icon,
+main h4:hover a.link-icon,
+main h5:hover a.link-icon,
+main h6:hover a.link-icon {
+    opacity: 1  ;
+}
+
+main h1 img,
+main h2 img,
+main h3 img,
+main h4 img,
+main h5 img,
+main h6 img {
   height: 18px;
 }
 
