@@ -1,5 +1,5 @@
 from .configuration import configure
 from .application import WikiBox
 
-__version__ = '0.4.1'
+__version__ = '0.5.0'
 
