@@ -1,5 +1,5 @@
 
-let headers = document.querySelectorAll('main h1, main h2, main h3, main h4')
+let headers = document.querySelectorAll('main h1, main h2, main h3, main h4, main h5, main h6')
 
 if (headers.length) {
   for (header of headers) {

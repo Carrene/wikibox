@@ -7,7 +7,7 @@
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
   <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
 </head>
-<body>
+<body class="${'no-nav' if hide_navigation else 'with-nav'}">
   <header>
     <h1>WIKI.CARRENE.COM</h1>
     <div class="breadcrumbs">
@@ -36,6 +36,7 @@
     </div>
     %endif
   </header>
+  %if not hide_navigation:
   <nav>
     <ul>
     %for node in nodes:
@@ -60,6 +61,7 @@
     %endfor
 	</ul>
   </nav>
+  %endif
   <main id="main">
   	${self.body()}
   </main>
