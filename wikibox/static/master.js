@@ -3,13 +3,31 @@ let headers = document.querySelectorAll('main h1, main h2, main h3, main h4')
 
 if (headers.length) {
   for (header of headers) {
-    let textNode = document.createTextNode(header.innerText)
     let headerId = header.id
-    let link = document.createElement('a')
+    let textNode = document.createTextNode(header.innerText)
+
+    // Creating the link icon
+
+    let linkIconElement = document.createElement('a')
+    linkIconElement.setAttribute('href', `#${headerId}`)
+    linkIconElement.setAttribute('class', `link-icon`)
+    let linkIcon = document.createElement('img')
+    linkIcon.setAttribute('src', `${window.location.origin}/static/images/link.svg`)
+    linkIconElement.appendChild(linkIcon)
+    linkIconElement.addEventListener('click', () => {
+      navigator.clipboard.writeText(`${window.location.href.split('#')[0]}#${headerId}`)
+    })
+
+    // Adding link to header text
+
+    let headerLink = document.createElement('a')
     header.innerText = ''
-    link.appendChild(textNode)
-    link.setAttribute('href', `#${headerId}`)
-    header.appendChild(link)
+    headerLink.appendChild(textNode)
+    headerLink.setAttribute('href', `#${headerId}`)
+
+
+    header.appendChild(linkIconElement)
+    header.appendChild(headerLink)
 
     // Adding the legend icon
 
