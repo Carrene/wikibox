@@ -53,9 +53,9 @@ class Root(Controller):
                 key=lambda n: (
                     n.verb == 'LEGEND',
                     not n.isdirectory,
-                    n.subject,
-                    n.verb,
-                    n.title
+                    n.subject or '',
+                    n.verb or '',
+                    n.title or ''
                 )
             )
         except FileNotFoundError:
@@ -93,10 +93,9 @@ class Root(Controller):
                 html = markdown2.markdown_path(
                     physical_path,
                     extras=[
-                        'tables', 
-                        'fenced-code-blocks', 
+                        'tables',
+                        'fenced-code-blocks',
                         'header-ids',
-                        'toc',
                     ]
                 )
             except FileNotFoundError:
