@@ -43,26 +43,6 @@ if (headers.length) {
   }
 }
 
-let pdfButton = document.getElementById('pdf')
-
-if (pdfButton) {
-  pdfButton.addEventListener('click', () => {
-    let title = document.querySelector('#main title').text
-    let filename = title.split('/')[title.split('/').length - 1]
-
-    var doc = new jsPDF()
-    var source = document.getElementById("main")
-    doc.fromHTML(
-      source,
-      15,
-      15,
-      {
-        width: 180
-      })
-    doc.save(`${filename}.pdf`)
-  })
-}
-
 let printButton = document.getElementById('print')
 
 if (printButton) {
