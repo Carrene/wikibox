@@ -135,8 +135,7 @@ header h1 {
 
 header .actions {
   display: grid;
-  grid-template-columns: 40px 40px;
-  grid-column-gap: 20px;
+  grid-template-columns: 40px;
   grid-template-rows: 40px;
 }
 
