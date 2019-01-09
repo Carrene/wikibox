@@ -5,27 +5,13 @@
 
 body {
   margin: 0;
-  display: grid;
   height: 100vh;
-  grid-template-rows: 120px calc(100vh - 120px);
-  grid-template-areas:
-    'header header'
-    'nav main';
   font-family: 'Roboto', sans-serif;
-}
-
-body.with-nav {
-  grid-template-columns: 500px calc(100vw - 500px);
-}
-
-body.no-nav {
-  grid-template-columns: auto 100vw;
 }
 
 /* HEADER */
 
 header {
-  grid-area: header;
   border-bottom: 1px solid gray;
   padding: 17px 30px;
   background: #34495e;
@@ -154,9 +140,10 @@ header .actions div img {
 /* NAV */
 
 nav {
-  grid-area: nav;
-  height: 100%;
+  width: 500px;
+  height: calc(100vh - 120px);
   background: #3498db;
+  float: left;
 }
 
 nav a {
@@ -206,17 +193,19 @@ nav ul li + li {
 /* MAIN */
 
 main {
-  grid-area: main;
-  height: 100%;
-  width: calc(100% - 5px);
+  height: calc(100vh - 120px);
+  width: calc(100% - 500px - 5px);
   overflow: auto;
   padding: 30px 80px;
   box-sizing: border-box;
-  display: grid;
-  grid-template-columns: 100%;
-  grid-row-gap: 20px;
-  justify-items: start;
-  align-content: start;
+}
+
+body.no-nav main {
+  width: calc(100% - 5px);
+}
+
+main > * {
+  margin: 20px 0;
 }
 
 main a {
@@ -281,11 +270,7 @@ main h3,
 main h4,
 main h5,
 main h6 {
-  display: grid;
-  grid-template-columns: 1fr auto;
   position: relative;
-  align-items: center;
-  grid-column-gap: 10px;
 }
 
 main h1 a.link-icon,
@@ -306,6 +291,16 @@ main h4:hover a.link-icon,
 main h5:hover a.link-icon,
 main h6:hover a.link-icon {
   opacity: 1;
+}
+
+main h1 a.legend-icon,
+main h2 a.legend-icon,
+main h3 a.legend-icon,
+main h4 a.legend-icon,
+main h5 a.legend-icon,
+main h6 a.legend-icon {
+  display: inline-grid;
+  margin-left: 10px;
 }
 
 main h1 img,
@@ -398,26 +393,28 @@ nav ul::-webkit-scrollbar-thumb {
   border-radius: 2.5px;
 }
 
+@page {
+  size: auto;
+  margin: 0mm;
+  margin-bottom: 10mm;
+}
+
 @media print {
   body {
     -webkit-print-color-adjust: exact;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    background: red;
-    page-break-before: always !important;
-    page-break-after: always !important;
+  body {
+    color: black !important;
   }
 
-  body {
-    grid-template-columns: 100%;
-    grid-template-rows: 100%;
-    color: black !important;
+  h2 {
+    page-break-before: always;
+  }
+
+  main {
+    width: 100%;
+    overflow: initial;
   }
 
   header,
@@ -425,10 +422,5 @@ nav ul::-webkit-scrollbar-thumb {
   nav,
   hr {
     display: none !important;
-  }
-
-  main {
-    grid-column: 1 / -1;
-    grid-row: 1 / -1;
   }
 }

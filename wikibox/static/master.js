@@ -1,5 +1,6 @@
-
-let headers = document.querySelectorAll('main h1, main h2, main h3, main h4, main h5, main h6')
+let headers = document.querySelectorAll(
+  'main h1, main h2, main h3, main h4, main h5, main h6'
+)
 
 if (headers.length) {
   for (header of headers) {
@@ -12,10 +13,15 @@ if (headers.length) {
     linkIconElement.setAttribute('href', `#${headerId}`)
     linkIconElement.setAttribute('class', `link-icon`)
     let linkIcon = document.createElement('img')
-    linkIcon.setAttribute('src', `${window.location.origin}/static/images/link.svg`)
+    linkIcon.setAttribute(
+      'src',
+      `${window.location.origin}/static/images/link.svg`
+    )
     linkIconElement.appendChild(linkIcon)
     linkIconElement.addEventListener('click', () => {
-      navigator.clipboard.writeText(`${window.location.href.split('#')[0]}#${headerId}`)
+      navigator.clipboard.writeText(
+        `${window.location.href.split('#')[0]}#${headerId}`
+      )
     })
 
     // Adding link to header text
@@ -25,7 +31,6 @@ if (headers.length) {
     headerLink.appendChild(textNode)
     headerLink.setAttribute('href', `#${headerId}`)
 
-
     header.appendChild(linkIconElement)
     header.appendChild(headerLink)
 
@@ -33,10 +38,17 @@ if (headers.length) {
 
     if (textNode.substringData(0, 4) === 'LIST') {
       let legendLinkElement = document.createElement('a')
-      legendLinkElement.setAttribute('href', `LEGEND-restfulpy--v*.md?nonav=true`)
+      legendLinkElement.setAttribute(
+        'href',
+        `LEGEND-restfulpy--v*.md?nonav=true`
+      )
       legendLinkElement.setAttribute('target', '_blank')
+      legendLinkElement.setAttribute('class', 'legend-icon')
       let helpIcon = document.createElement('img')
-      helpIcon.setAttribute('src', `${window.location.origin}/static/images/help.svg`)
+      helpIcon.setAttribute(
+        'src',
+        `${window.location.origin}/static/images/help.svg`
+      )
       legendLinkElement.appendChild(helpIcon)
       header.appendChild(legendLinkElement)
     }
