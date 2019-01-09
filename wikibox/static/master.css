@@ -1,4 +1,3 @@
-
 * {
   margin: 0;
   padding: 0;
@@ -10,8 +9,8 @@ body {
   height: 100vh;
   grid-template-rows: 120px calc(100vh - 120px);
   grid-template-areas:
-    "header header"
-    "nav main";
+    'header header'
+    'nav main';
   font-family: 'Roboto', sans-serif;
 }
 
@@ -29,15 +28,15 @@ header {
   grid-area: header;
   border-bottom: 1px solid gray;
   padding: 17px 30px;
-  background: #34495E;
+  background: #34495e;
   display: grid;
   grid-template-columns: 1fr auto;
   grid-row-gap: 15px;
-  color: #FFF;
+  color: #fff;
 }
 
 header a {
-  color: #FFF;
+  color: #fff;
   text-decoration: none;
 }
 
@@ -50,7 +49,7 @@ header .breadcrumbs {
 }
 
 header .breadcrumbs .path {
-  background-color: #2980B9;
+  background-color: #2980b9;
   position: relative;
   display: grid;
   align-items: center;
@@ -68,10 +67,10 @@ header .breadcrumbs .path:not(:first-of-type) a {
 }
 
 header .breadcrumbs .path:first-of-type {
-  background-color: #3498DB;
+  background-color: #3498db;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
-  background-image: url("images/home.svg");
+  background-image: url('images/home.svg');
   background-repeat: no-repeat;
   background-size: 17px;
   background-position: center center;
@@ -94,13 +93,13 @@ header .breadcrumbs .path::after {
   border-right: none;
   border-bottom: 20px solid transparent;
   border-top: 20px solid transparent;
-  border-left: 10px solid #3498DB;
+  border-left: 10px solid #3498db;
   right: -10px;
   z-index: 100;
 }
 
 header .breadcrumbs .path:not(:first-of-type)::after {
-  border-left-color: #2980B9;
+  border-left-color: #2980b9;
 }
 
 header .breadcrumbs .path::before {
@@ -112,15 +111,15 @@ header .breadcrumbs .path::before {
   border-right: none;
   border-bottom: 20px solid transparent;
   border-top: 20px solid transparent;
-  border-left: 10px solid #34495E;
+  border-left: 10px solid #34495e;
 }
 
 header .breadcrumbs .path:last-of-type {
-  background-color: #1ABC9C;
+  background-color: #1abc9c;
 }
 
 header .breadcrumbs .path:last-of-type::after {
-  border-left-color: #1ABC9C;
+  border-left-color: #1abc9c;
 }
 
 header .breadcrumbs .path:first-of-type::before {
@@ -144,7 +143,7 @@ header .actions div {
   padding: 8px 0;
   box-sizing: border-box;
   justify-items: center;
-  background: #2980B9;
+  background: #2980b9;
   cursor: pointer;
 }
 
@@ -157,11 +156,11 @@ header .actions div img {
 nav {
   grid-area: nav;
   height: 100%;
-  background: #3498DB;
+  background: #3498db;
 }
 
 nav a {
-  color: #FFF;
+  color: #fff;
   text-decoration: none;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -185,13 +184,15 @@ nav ul li {
   align-items: center;
 }
 
-nav ul li span.verb, nav ul li span.subject {
+nav ul li span.verb,
+nav ul li span.subject {
   font-weight: 500;
   font-size: 17px;
 }
 
-nav ul li span.verb, nav ul li span.selected {
-  color: #FDD835;
+nav ul li span.verb,
+nav ul li span.selected {
+  color: #fdd835;
 }
 
 nav ul li img {
@@ -199,7 +200,7 @@ nav ul li img {
 }
 
 nav ul li + li {
-  border-top: 1px solid rgba(255, 255, 255, .5);
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 /* MAIN */
@@ -220,20 +221,27 @@ main {
 
 main a {
   text-decoration: none;
-  color: #000
+  color: #000;
 }
 
-table, table thead, table tbody, table tr, table th, table td {
+table,
+table thead,
+table tbody,
+table tr,
+table th,
+table td {
   border-collapse: collapse;
   box-sizing: border-box;
 }
 
-main table tr th, main table tr td {
+main table tr th,
+main table tr td {
   width: 300px;
   max-width: 300px;
 }
 
-main table tr th,main  table tr td {
+main table tr th,
+main table tr td {
   padding: 10px 20px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -241,15 +249,15 @@ main table tr th,main  table tr td {
 }
 
 main table thead {
-  background: #2980B9;
+  background: #2980b9;
 }
 
 table thead tr th {
-  border: 1px solid #FFF;
+  border: 1px solid #fff;
   font-size: 18px;
   font-weight: 300;
   text-align: left;
-  color: #FFF;
+  color: #fff;
 }
 
 table tbody {
@@ -258,13 +266,13 @@ table tbody {
 }
 
 table tbody tr:nth-of-type(odd) {
-  background: #EBEBEB;
-  border: 1px solid #FFFFFF;
+  background: #ebebeb;
+  border: 1px solid #ffffff;
 }
 
 table tbody tr:nth-of-type(even) {
-  background: #FFFFFF;
-  border: 1px solid #EBEBEB;
+  background: #ffffff;
+  border: 1px solid #ebebeb;
 }
 
 main h1,
@@ -286,9 +294,9 @@ main h3 a.link-icon,
 main h4 a.link-icon,
 main h5 a.link-icon,
 main h6 a.link-icon {
-    opacity: 0;
-    position: absolute;
-    right: calc(100% + 10px);
+  opacity: 0;
+  position: absolute;
+  right: calc(100% + 10px);
 }
 
 main h1:hover a.link-icon,
@@ -297,7 +305,7 @@ main h3:hover a.link-icon,
 main h4:hover a.link-icon,
 main h5:hover a.link-icon,
 main h6:hover a.link-icon {
-    opacity: 1  ;
+  opacity: 1;
 }
 
 main h1 img,
@@ -339,7 +347,7 @@ main ul li {
 
 main .codehilite {
   width: 100%;
-  background: #00162C;
+  background: #00162c;
 }
 
 main .codehilite pre {
@@ -355,11 +363,11 @@ main::-webkit-scrollbar {
 }
 
 main::-webkit-scrollbar-track {
-  background: #FFF;
+  background: #fff;
 }
 
 main::-webkit-scrollbar-thumb {
-  background: #34495E;
+  background: #34495e;
   border-radius: 2.5px;
 }
 
@@ -369,11 +377,11 @@ main *::-webkit-scrollbar {
 }
 
 main *::-webkit-scrollbar-track {
-  background: #FFF;
+  background: #fff;
 }
 
 main *::-webkit-scrollbar-thumb {
-  background: #34495E;
+  background: #34495e;
   border-radius: 2.5px;
 }
 
@@ -382,32 +390,45 @@ nav ul::-webkit-scrollbar {
 }
 
 nav ul::-webkit-scrollbar-track {
-  background: #3498DB;
+  background: #3498db;
 }
 
 nav ul::-webkit-scrollbar-thumb {
-  background: #FFF;
+  background: #fff;
   border-radius: 2.5px;
 }
 
 @media print {
+  body {
+    -webkit-print-color-adjust: exact;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    background: red;
+    page-break-before: always !important;
+    page-break-after: always !important;
+  }
+
   body {
     grid-template-columns: 100%;
     grid-template-rows: 100%;
     color: black !important;
   }
 
-  header, footer, nav, hr {
+  header,
+  footer,
+  nav,
+  hr {
     display: none !important;
   }
 
   main {
     grid-column: 1 / -1;
     grid-row: 1 / -1;
-  }
-
-  table, tbody, thead, td, tr, th {
-    border: 1px solid black;
-    color: black !important;
   }
 }
