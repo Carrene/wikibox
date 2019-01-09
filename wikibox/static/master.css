@@ -417,6 +417,10 @@ nav ul::-webkit-scrollbar-thumb {
     overflow: initial;
   }
 
+  table {
+    page-break-inside: avoid;
+  }
+
   header,
   footer,
   nav,
